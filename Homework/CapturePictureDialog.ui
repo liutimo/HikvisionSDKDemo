@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CapturePicture</class>
+ <widget class="QDialog" name="CapturePicture">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>259</width>
+    <height>180</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>图片大小</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="sizeComboBox">
+          <item>
+           <property name="text">
+            <string>CIF</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>QCIF</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>D1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>UXGA(1600x1200)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>SVGA(800x600)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>HD720p(1280x720)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>VGA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>XVGA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>HD900p</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>HD1080</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2560*1920</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1600*304</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2048*1536</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2448*2048</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2448*1200</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2448*800</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>XGA(1024*768)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>SXGA(1280*1024)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>WD1(960*576/960*480)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1080i</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>576*576</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1536*1536</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1920*1920</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>图片目录</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="qualityComboBox">
+          <item>
+           <property name="text">
+            <string>最好</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>较好</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>一般</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCapture">
+       <property name="text">
+        <string>抓图</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClose">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

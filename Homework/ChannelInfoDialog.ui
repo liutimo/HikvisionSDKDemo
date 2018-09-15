@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChannelInfoDialog</class>
+ <widget class="QDialog" name="ChannelInfoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>356</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>通道属性</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>通 道 名 称</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="4">
+         <widget class="QLineEdit" name="channelName"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>设 备 名 称</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>设 备 地 址</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>传 输 协 议</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>传 输 类 型</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>预 览 模 式</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>录 像 回 传</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>取流协议类型</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>编解码类型</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1" colspan="4">
+         <widget class="QComboBox" name="decodeType">
+          <item>
+           <property name="text">
+            <string>通用编码类型(YUV)（一个像素点8BIT） </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>裸码流类型（一个像素点14BIT）</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="8" column="1" colspan="4">
+         <widget class="QComboBox" name="getStreamProtoType">
+          <item>
+           <property name="text">
+            <string>私有协议</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RTSP协议</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="7" column="1" colspan="4">
+         <widget class="QComboBox" name="videoBack">
+          <item>
+           <property name="text">
+            <string>启动录像回传</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>不启动录像回传</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="6" column="1" colspan="4">
+         <widget class="QComboBox" name="previewMode">
+          <item>
+           <property name="text">
+            <string>正常预览</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>延迟预览</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="1" colspan="4">
+         <widget class="QComboBox" name="transType">
+          <item>
+           <property name="text">
+            <string>主码流</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>子码流</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>码流3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>码流4/转码流</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>码流5</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="4" column="1" colspan="4">
+         <widget class="QComboBox" name="transProtocol">
+          <item>
+           <property name="text">
+            <string>TCP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>UDP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MCAST</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RTP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RTP over RSTP</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="3" column="1" colspan="4">
+         <widget class="QLineEdit" name="ipAddr">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="4">
+         <widget class="QLineEdit" name="deviceName">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="4">
+         <widget class="QLineEdit" name="channelNumber">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>通  道  号</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okBtn">
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelBtn">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ChannelInfoDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>29</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ChannelInfoDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>197</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

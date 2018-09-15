@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/Homework">
+        <file>Resources/logo.png</file>
+        <file>Resources/ipc_normal.png</file>
+        <file>Resources/add.png</file>
+        <file>Resources/delete.png</file>
+        <file>Resources/excel.png</file>
+        <file>Resources/update.png</file>
+        <file>Resources/camera.png</file>
+        <file>Resources/offline.png</file>
+        <file>Resources/online.png</file>
+        <file>Resources/setting.png</file>
+        <file>Resources/pause.png</file>
+        <file>Resources/play.png</file>
+        <file>Resources/startRecord.png</file>
+        <file>Resources/stopRecord.png</file>
+        <file>Resources/before.png</file>
+        <file>Resources/next.png</file>
+        <file>Resources/pause2.png</file>
+        <file>Resources/stop.png</file>
+        <file>Resources/pause1.png</file>
+        <file>Resources/pause3.png</file>
+        <file>Resources/play1.png</file>
+        <file>Resources/play2.png</file>
+        <file>Resources/play3.png</file>
+    </qresource>
+</RCC>
