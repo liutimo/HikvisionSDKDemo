@@ -7,20 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1243</width>
-    <height>756</height>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QTableWidget" name="tableWidget">
        <property name="maximumSize">
         <size>
-         <width>500</width>
+         <width>350</width>
          <height>16777215</height>
         </size>
        </property>
@@ -34,36 +34,344 @@
          <string>大小</string>
         </property>
        </column>
-       <column>
-        <property name="text">
-         <string>类型</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>开始时间</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>结束时间</string>
-        </property>
-       </column>
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="widget" native="true">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <layout class="QGridLayout" name="gridLayout"/>
-        </item>
-       </layout>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="playFrame">
+         <property name="styleSheet">
+          <string notr="true">image:url(:/Homework/Resources/logo.png);
+border:1px solid gray;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QSlider" name="processSlider">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>15</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider
+{
+	min-height:5px;
+	max-height:5px;
+    border:5px solid rgba(255, 255, 255, 0);
+    }
+QSlider::add-page:horizontal
+{     
+   background-color:rgb(87, 97, 106);
+   height:4px;
+}
+QSlider::sub-page:horizontal 
+{
+   background-color: rgb(225, 75, 0);
+	height:4px;
+ }
+    
+QSlider::groove:horizontal 
+{
+	background:transparent;
+	height:6px;
+}    
+QSlider::handle:horizontal     
+{     
+	height: 13px;
+	width:13px;
+    border-image: url(:/Homework/Resources/ic_volume_thumb.png);
+    margin: -4 -0px; 
+}</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="stopBtn">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">/*QPushButton 
+{
+	border-image: url(:/Homework/Resources/play1.png);
+}
+
+QPushButton:pressed
+{
+	border-image: url(:/Homework/Resources/play2.png);
+}
+
+QPushButton:hover
+{
+	border-image: url(:/Homework/Resources/play3.png);
+}
+*/</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Homework.qrc">
+             <normaloff>:/Homework/Resources/stop.png</normaloff>:/Homework/Resources/stop.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="slowPlayBtn">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Homework.qrc">
+             <normaloff>:/Homework/Resources/before.png</normaloff>:/Homework/Resources/before.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="playBtn">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">/*QPushButton 
+{
+	border-image: url(:/Homework/Resources/play1.png);
+}
+
+QPushButton:pressed
+{
+	border-image: url(:/Homework/Resources/play2.png);
+}
+
+QPushButton:hover
+{
+	border-image: url(:/Homework/Resources/play3.png);
+}
+*/</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Homework.qrc">
+             <normaloff>:/Homework/Resources/play.png</normaloff>:/Homework/Resources/play.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="fastPlayBtn">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Homework.qrc">
+             <normaloff>:/Homework/Resources/next.png</normaloff>:/Homework/Resources/next.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/Homework/Resources/voice.png);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="voiceSlider">
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>15</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider
+{
+	min-height:5px;
+	max-height:5px;
+    border:5px solid rgba(255, 255, 255, 0);
+    }
+QSlider::add-page:horizontal
+{     
+   background-color:rgb(87, 97, 106);
+   height:4px;
+}
+QSlider::sub-page:horizontal 
+{
+   background-color:  rgb(203, 203,203);
+	height:4px;
+ }
+    
+QSlider::groove:horizontal 
+{
+	background:transparent;
+	height:6px;
+}    
+QSlider::handle:horizontal     
+{     
+	height: 13px;
+	width:13px;
+    border-image: url(:/Homework/Resources/ic_volume_thumb.png);
+    margin: -4 -0px; 
+}</string>
+           </property>
+           <property name="maximum">
+            <number>65535</number>
+           </property>
+           <property name="sliderPosition">
+            <number>50</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Homework.qrc"/>
+ </resources>
  <connections/>
 </ui>

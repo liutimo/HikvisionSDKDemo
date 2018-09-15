@@ -39,11 +39,11 @@ int main(int argc, char *argv[])
 
 	Utils::initSettings();
 
-	/*MainWindow w;
+	MainWindow w;
 	w.show();
-*/
-	MainPlayBackWidget w;
-	w.show();
+
+	//MainPlayBackWidget w;
+	//w.show();
 
 	return a.exec();
 }

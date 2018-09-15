@@ -18,12 +18,16 @@ class ChannelInfo;
 class CapturePictureDialog;
 class DeviceInfoDialog;
 class ChannelInfoDialog;
+class MainPlayBackWidget;
+class RemoteFileWidget;
+class QVBoxLayout;
 QT_END_NAMESPACE
 
 class MainWindow :
 	public QMainWindow
 {
 	Q_OBJECT
+	friend class RemoteFileWidget;
 public:
 	explicit MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
@@ -41,6 +45,9 @@ private slots:
 	void onShowChannelAttribute();					//通道属性窗口
 	void onModifyDeviceInfo(DeviceInfo deviceInfo);	//修改设备信息
 	void onRecord();								//开始录像
+	void onPlayBackLocalFile();						//回放本地文件
+	void onPlayBackRemoteFile();					//回放远程文件
+	void onPlayBackByTime();						//按时间回放文件
 
 
 
@@ -48,7 +55,6 @@ protected:
 	bool eventFilter(QObject *watched, QEvent *event);
 
 private:
-	
 	void _InitMenu();
 	void _HideAllVideoLabel();
 	void _ShowAllVideoLabel();
@@ -86,6 +92,10 @@ private:
 	QString m_normalStyle = "image:url(:/Homework/Resources/logo.png);border:1px solid gray;";
 
 	QWidget *m_selectedLabel;
+	MainPlayBackWidget *m_mainPlayBackWidget;
+	RemoteFileWidget   *m_remoteFileWidget;
+
+	QVBoxLayout			*m_playBackWidgetLayout;
 };
 
 

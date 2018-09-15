@@ -23,5 +23,8 @@
         <file>Resources/play1.png</file>
         <file>Resources/play2.png</file>
         <file>Resources/play3.png</file>
+        <file>Resources/bk.png</file>
+        <file>Resources/ic_volume_thumb.png</file>
+        <file>Resources/voice.png</file>
     </qresource>
 </RCC>

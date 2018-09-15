@@ -7,6 +7,8 @@
 #include "DeviceInfoDialog.h"
 #include "ChannelInfoDialog.h"
 #include "CapturePictureDialog.h"
+#include "MainPlayBackWidget.h"
+#include "RemoteFileWidget.h"
 #include "DeviceInfo.h"
 #include "Database.h"
 
@@ -16,13 +18,15 @@
 #include <QMessageBox>
 #include <QDateTime>
 #include <QScrollBar>
+#include <QVBoxLayout>
 
 MainWindow *g_mainWindow = nullptr;			//全局指针
 
 MainWindow::MainWindow(QWidget *parent) :
 QMainWindow(parent), ui(new Ui::MainWindow), m_capturePictureDialog(nullptr),
 m_addDeviceDialog(nullptr), m_channelMaxed(false), m_videoLabelMenu(nullptr),
-m_currentItem(nullptr), m_deviceInfoDialog(nullptr)
+m_currentItem(nullptr), m_deviceInfoDialog(nullptr), m_mainPlayBackWidget(nullptr),
+m_channelInfoDialog(nullptr), m_remoteFileWidget(nullptr), m_playBackWidgetLayout(nullptr)
 {
 	ui->setupUi(this);
 	m_selectedLabel = ui->videoLabel1;
@@ -31,12 +35,15 @@ m_currentItem(nullptr), m_deviceInfoDialog(nullptr)
 
 	/*状态栏*/
 	connect(ui->addDeviceAction, &QAction::triggered, this, &MainWindow::onShowAddDeviceDialog);
-	connect(ui->recordAction, &QAction::triggered, this, &MainWindow::onRecord);
 	connect(ui->settingAction, &QAction::triggered, this, [this](){
 		SettingDialog *settingDialog = new SettingDialog(this);
 		settingDialog->setModal(true);
 		settingDialog->show();
 	});
+	connect(ui->localPlayBackAction, &QAction::triggered, this, &MainWindow::onPlayBackLocalFile);
+	connect(ui->namePlayBackAction, &QAction::triggered, this, &MainWindow::onPlayBackRemoteFile);
+	connect(ui->timePlayBackAction, &QAction::triggered, this, &MainWindow::onPlayBackByTime);
+
 
 	_InitTreeWidget();
 
@@ -55,6 +62,9 @@ m_currentItem(nullptr), m_deviceInfoDialog(nullptr)
 	//选中整行,每次只允许选中一行
 	ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+
+	m_playBackWidgetLayout = new QVBoxLayout;
+	ui->playBackGroupBox->setLayout(m_playBackWidgetLayout);
 
 	g_mainWindow = this;
 }
@@ -83,29 +93,34 @@ MainWindow::~MainWindow()
 	{
 		delete m_channelInfoDialog;
 	}
+
+	if (m_mainPlayBackWidget != nullptr)
+	{
+		delete m_mainPlayBackWidget;
+	}
 }
 
 
 void MainWindow::addLog(const char *msg)
 {
-	QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-	QString alarmInfo = QString(msg);
-	QString deviceInfo = "暂时先不管";
+	//QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+	//QString alarmInfo = QString(msg);
+	//QString deviceInfo = "暂时先不管";
 
-	QTableWidgetItem *item1 = new QTableWidgetItem(time);
-	QTableWidgetItem *item2 = new QTableWidgetItem(alarmInfo);
-	QTableWidgetItem *item3 = new QTableWidgetItem(deviceInfo);
+	//QTableWidgetItem *item1 = new QTableWidgetItem(time);
+	//QTableWidgetItem *item2 = new QTableWidgetItem(alarmInfo);
+	//QTableWidgetItem *item3 = new QTableWidgetItem(deviceInfo);
 
-	int row = ui->tableWidget->rowCount();
+	//int row = ui->tableWidget->rowCount();
 
-	ui->tableWidget->setRowCount(row + 1);
+	//ui->tableWidget->setRowCount(row + 1);
 
-	ui->tableWidget->setItem(row, 0, item1);
-	ui->tableWidget->setItem(row, 1, item2);
-	ui->tableWidget->setItem(row, 2, item3);
+	//ui->tableWidget->setItem(row, 0, item1);
+	//ui->tableWidget->setItem(row, 1, item2);
+	//ui->tableWidget->setItem(row, 2, item3);
 
-	//ui->tableWidget->setCurrentCell(row, 0);
-	ui->tableWidget->scrollToBottom();
+	////ui->tableWidget->setCurrentCell(row, 0);
+	//ui->tableWidget->scrollToBottom();
 }
 
 void MainWindow::_InitMenu()
@@ -177,13 +192,8 @@ void MainWindow::_InitTreeWidget()
 	for (DeviceInfo &device : devices)
 	{
 		QTreeWidgetItem *item = new QTreeWidgetItem(ui->treeWidget, QStringList(device.getDeviceName()));
+		item->setIcon(0, QIcon(":/Homework/Resources/offline.png"));
 		m_devices.insert(item, device);
-
-		/*for (ChannelInfo &channel : device.getChannels())
-		{
-			QTreeWidgetItem *child = new QTreeWidgetItem(item, QStringList(channel.getChannelName()));
-			item->addChild(child);
-		}*/
 	}
 }
 
@@ -414,13 +424,6 @@ void MainWindow::onLogin()
 		deviceInfo.setFirstLogin(false);
 	}
 	deviceInfo.setWorkable();
-
-	//test播放录像
-	int ret = NET_DVR_PlayBackByName(deviceInfo.getLoginID(), "C:\mpeg4record\2018-09-11\10.18.99.36_01_0_20180911_172856_1.mp4", (HWND)ui->videoLabel1->winId());
-	if (ret == -1)
-		ui->statusbar->showMessage(NET_DVR_GetErrorMsg());
-	else
-		ui->statusbar->showMessage("??");
 }
 
 void MainWindow::onLogout()
@@ -683,6 +686,62 @@ void MainWindow::onRecord()
 	*/
 }
 
+void MainWindow::onPlayBackLocalFile()
+{
+	ui->playBackGroupBox->setTitle("本地录像回放");
+	ui->tabWidget->setCurrentIndex(1);
+	
+	if (m_mainPlayBackWidget == nullptr)
+	{
+		delete m_mainPlayBackWidget;
+		m_mainPlayBackWidget = new MainPlayBackWidget();
+	}
+
+	if (m_remoteFileWidget != nullptr)
+		m_remoteFileWidget->hide();
+	m_mainPlayBackWidget->show();
+	m_playBackWidgetLayout->addWidget(m_mainPlayBackWidget);
+}
+
+void MainWindow::onPlayBackRemoteFile()
+{
+	ui->playBackGroupBox->setTitle("按文件名回放");
+	ui->tabWidget->setCurrentIndex(1);
+
+	if (m_remoteFileWidget != nullptr)
+	{
+		delete m_remoteFileWidget;
+		m_remoteFileWidget = nullptr;
+	}
+
+	m_remoteFileWidget = new RemoteFileWidget();
+	m_remoteFileWidget->setMainWindow(this);		//必须设置MainWindow
+
+	if (m_mainPlayBackWidget != nullptr)
+		m_mainPlayBackWidget->hide();
+	m_remoteFileWidget->show();
+	m_playBackWidgetLayout->addWidget(m_remoteFileWidget);
+}
+
+void MainWindow::onPlayBackByTime() 						//按时间回放文件
+{
+	ui->playBackGroupBox->setTitle("按时间回放");
+	ui->tabWidget->setCurrentIndex(1);
+
+	if (m_remoteFileWidget != nullptr)
+	{
+		delete m_remoteFileWidget;
+		m_remoteFileWidget = nullptr;
+	}
+
+	m_remoteFileWidget = new RemoteFileWidget(RemoteFileWidget::PLAYBYTIME);
+	m_remoteFileWidget->setMainWindow(this);		//必须设置MainWindow
+
+	if (m_mainPlayBackWidget != nullptr)
+		m_mainPlayBackWidget->hide();
+	m_remoteFileWidget->show();
+	m_playBackWidgetLayout->addWidget(m_remoteFileWidget);
+}
 
 bool _AlarmInfoCallBack(LONG lCommand, NET_DVR_ALARMER *pAlarmer, char *pAlarmInfo, DWORD dwBufLen, void *pUser)
 {
